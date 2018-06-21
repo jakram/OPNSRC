@@ -1,2 +1,2 @@
 # OPNSRC
-A web app to search open source projects on Github.
+A web app to search open source projects on GitHub.
