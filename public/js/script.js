@@ -11,7 +11,7 @@ document.getElementById('urlSubmit').addEventListener('click', (event) => {
     //search public or private repos
     var publicPrivate = "public"; 
     //common open source licenses 
-    var licenses = ["mit", "gpl", "apache-2.0", "mpl-2.0", "cc"]
+    var licenses = ["mit", "gpl", "apache-2.0", "mpl-2.0", "cc"]; 
     //sort by stars, forks, or updated
     var sortBy = "stars"; 
 
