@@ -12,6 +12,7 @@
     "body-parser": "^1.13.3",
     "express": "^4.13.2",
     "express-handlebars": "^2.0.1",
-    "express-session": "^1.11.3"
+    "express-session": "^1.11.3",
+    "npm": "^6.1.0"
   }
 }
