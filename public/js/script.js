@@ -1,5 +1,11 @@
 //Github API Script
 
+document.getElementById("languageList").addEventListener("click", function(e) {
+    if (e.target && e.target.nodeName == "LI") {
+        var language = e.target.textContent;
+    }
+});
+
 document.getElementById('urlSubmit').addEventListener('click', (event) => {
     console.log('test');
     var req = new XMLHttpRequest(); 
