@@ -59,7 +59,21 @@ app.get('/repos', function(req, res, next){
             console.log(error); 
             res.render('500');
         }); 
-}); 
+});
+
+app.get('/issues',function(req,res,next){
+    var context = {};
+    console.log(req.query);
+
+    res.send('home', context);
+});
+
+app.get('/',function(req,res,next){
+    var context = {};
+
+    res.render('home', context);
+
+});
 
 app.post('/',function(req,res,next){
     var context = {};
