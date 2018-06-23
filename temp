@@ -1,0 +1,24 @@
+<--
+<div class="container">
+    <table id="dataTable" border="2" style="margin-left: -1em">
+        <tbody id="resultsTable">
+        <tr>
+            <!-- Table Headers -->
+            <th>Project</th>
+            <th>Description</th>
+            <th>Language</th>
+            <th>Open issues</th>
+            <th>URL</th>
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+-->
+
+<-- button points to the form -->
+    <div>
+        <button type="button" class="btn btn-primary" id="formButton">Search Projects</button>
+    </div>
