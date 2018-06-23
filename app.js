@@ -57,7 +57,53 @@ app.get('/repos', function(req, res, next){
             console.log(error); 
             res.render('500');
         }); 
-}); 
+});
+
+app.get('/issues',function(req,res,next){
+    //https://api.github.com/search/issues?q=windows+label:bug+language:python+state:open&sort=created&order=asc
+
+    var context = {};
+    console.log(req.query);
+    var language = req.query.language;
+    var sortBy = "created";
+    var order = "desc";
+
+    // build url, add state, language, sort, maybe label?
+    var url = "https://api.github.com/search/issues?q=";
+    url += "language:" + language;
+    url += "state:open";
+    url += "&sort=" + sortBy;
+    url += "&order=" + order;
+    var index = 0;
+
+    axios.get(url)
+        .then(response => {
+            if (response.data.message) {
+                console.log(
+                    `Got ${Object.entries(response.data.message).length} issues`
+                )
+            }
+            while(context.repos.length < 10 && index < response.data.items.length){
+                var r = response.data.items[index];
+                if(r.open_issues_count > 0){
+                    context.issues.push(response.data.items[index]);
+                }
+                index++;
+            }
+            res.render('issues', context);
+        })
+        .catch(error => {
+            console.log(error)
+            res.render('500');
+        });
+});
+
+app.get('/',function(req,res,next){
+    var context = {};
+
+    res.render('home', context);
+
+});
 
 app.post('/',function(req,res,next){
     var context = {};

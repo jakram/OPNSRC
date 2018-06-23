@@ -57,13 +57,10 @@ function createList(response) {
     var elements = document.getElementsByClassName("column");
 
     listView(elements);
-
-
 }
 
 function displayRepo(repo) {
-
-
+    
     let repoLink = document.getElementById("repoUrl");
 }
 
