@@ -9,10 +9,12 @@
   "author": "SOURCErers",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.13.3",
     "express": "^4.13.2",
     "express-handlebars": "^2.0.1",
     "express-session": "^1.11.3",
+    "nodemon": "^1.17.5",
     "npm": "^6.1.0"
   }
 }

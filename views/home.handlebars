@@ -24,6 +24,19 @@
 
 </div>
 
+<div class="container" id="repos">
+    <ul>
+        {{#each repos}}
+            <li>
+                <ul>
+                    <li>{{this.full_name}}</li>
+                    <li>{{this.description}}</li>
+                    <li>{{this.html_url}}</li>
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+</div>
 <-- footer partial can be embedded in all pages -->
 {{>footer}}
 
