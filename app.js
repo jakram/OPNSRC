@@ -63,12 +63,12 @@ app.get('/issues',function(req,res,next){
     //https://api.github.com/search/issues?q=windows+label:bug+language:python+state:open&sort=created&order=asc
 
     var context = {};
+    context.issues = []; 
     console.log(req.query);
     var language = req.query.language;
 
-    var baseUrl = "https://api.github.com/search/issues?q=";
+    var baseUrl = "https://api.github.com/search/issues?q=" + req.query.repo;
     //paramms
-    var repo = req.query.username + "/" + req.query.repo;
     var sortBy = "created";
     var order = "desc";
     var state = "open";
@@ -78,7 +78,6 @@ app.get('/issues',function(req,res,next){
 
     axios.get(baseUrl, {
             params: {
-                repo: repo,
                 language: language,
                 state: state,
                 assignee: "none",
@@ -91,12 +90,9 @@ app.get('/issues',function(req,res,next){
             if (response.data.message) {
                 console.log(`Got ${Object.entries(response.data.message).length} issues`);
             }
+            console.log(response.data.items); 
             while(context.issues.length < 15 && index < response.data.items.length){
-                var r = response.data.items[index];
-                if(r.open_issues_count > 0){
-                    context.issues.push(response.data.items[index]);
-                    console.log(response.data.items[index]);
-                }
+                context.issues.push(response.data.items[index]);
                 index++;
             }
             res.render('issues', context);
