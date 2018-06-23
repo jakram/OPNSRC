@@ -23,10 +23,15 @@
 
 </div>
 
+<h4>Open Source Projects matching  your skills: </h4>
+
 <div class="container" id="list">
-    {{>repos}}
+    {{#each repos}}
+        {{>repos this}}
+    {{/each}}
 </div>
 
+<br> 
 
 <div>
     <button type="button" class="btn btn-primary" id="urlSubmit">Test Search API</button>

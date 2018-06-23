@@ -1,34 +1,12 @@
-<h4>Open Source Projects matching  your skills: </h4>
-<br>
-
 <div class="list-group" id="repos">
-
-    <ul>
-        {{#each repos}}
-            <li>
-                <ul>
-                    <li>{{this.full_name}}</li>
-                    <li>{{this.description}}</li>
-                    <li>{{this.html_url}}</li>
-                </ul>
-            </li>
-        {{/each}}
-    </ul>
-
     <br>
-
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light">
         <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1">Repo name</h3>
+            <h3 class="mb-1">{{this.full_name}}</h3>
             <small>Some text...</small>
         </div>
-        <p class="mb-1">Repo description. Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <p class="mb-1">{{this.description}}</p>
         <small>Donec id elit non mi porta.</small>
     </a>
-
 </div>
-
-
-<br><br>
-
 
