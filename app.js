@@ -19,11 +19,13 @@ app.get('/',function(req,res,next){
 });
 
 app.get('/repos', function(req, res, next){
+    console.log("in repos server side");
     //search by language
     var context = {};
     context.repos = [];
     var idx = 0;
-    var lang = "python"; //TODO: get language from form req 
+    var lang = "python"; //TODO: get language from form req
+    console.log(req.query);
     //search public or private repos
     var publicPrivate = "public"; 
     //fork or main repo
