@@ -92,7 +92,9 @@ app.get('/issues',function(req,res,next){
             }
             console.log(response.data.items); 
             while(context.issues.length < 15 && index < response.data.items.length){
-                context.issues.push(response.data.items[index]);
+                if(response.data.items[index].state == "open"){
+                    context.issues.push(response.data.items[index]);
+                }
                 index++;
             }
             res.render('issues', context);
