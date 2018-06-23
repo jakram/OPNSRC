@@ -65,28 +65,37 @@ app.get('/issues',function(req,res,next){
     var context = {};
     console.log(req.query);
     var language = req.query.language;
+
+    var baseUrl = "https://api.github.com/search/issues?q=";
+    //paramms
+    var repo = req.query.username + "/" + req.query.repo;
     var sortBy = "created";
     var order = "desc";
+    var state = "open";
+    var type = "issue";
 
-    // build url, add state, language, sort, maybe label?
-    var url = "https://api.github.com/search/issues?q=";
-    url += "language:" + language;
-    url += "state:open";
-    url += "&sort=" + sortBy;
-    url += "&order=" + order;
     var index = 0;
 
-    axios.get(url)
+    axios.get(baseUrl, {
+            params: {
+                repo: repo,
+                language: language,
+                state: state,
+                assignee: "none",
+                sort: sortBy,
+                direction: order,
+                is: type
+            }
+        })
         .then(response => {
             if (response.data.message) {
-                console.log(
-                    `Got ${Object.entries(response.data.message).length} issues`
-                )
+                console.log(`Got ${Object.entries(response.data.message).length} issues`);
             }
-            while(context.repos.length < 10 && index < response.data.items.length){
+            while(context.issues.length < 15 && index < response.data.items.length){
                 var r = response.data.items[index];
                 if(r.open_issues_count > 0){
                     context.issues.push(response.data.items[index]);
+                    console.log(response.data.items[index]);
                 }
                 index++;
             }
