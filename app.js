@@ -2,6 +2,7 @@
 var express = require('express');
 //var mysql = require('./gitAuth.js');
 var axios = require('axios'); 
+var urlCreator = require('./url.js'); 
 
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
@@ -13,40 +14,34 @@ app.set('port', 3000);
 app.use(express.static('public'));
 
 app.get('/',function(req,res,next){
-    var context = {};
-
-    res.render('home', context);
-
-});
-
-app.get('/repos', function(req, res, next){
-    console.log("in repos server side");
     //search by language
     var context = {};
     context.repos = [];
     var idx = 0;
-    var lang = "python"; //TODO: get language from form req
-    console.log(req.query);
-    //search public or private repos
-    var publicPrivate = "public"; 
-    //fork or main repo
-    var fork = false; 
-    //common open source licenses 
-    var licenses = ["mit", "gpl", "apache-2.0", "mpl-2.0", "cc"]; 
-    //sort by stars, forks, or updated
-    var sortBy = "stars"; 
+    var url = urlCreator(['c++']);
+    axios.get(url)
+        .then(response => {
+            while(context.repos.length < 5 && idx < response.data.items.length){
+                var r = response.data.items[idx]; 
+                if(r.open_issues_count > 0){
+                    context.repos.push(response.data.items[idx]);
+                }
+                idx++;
+            }
+            res.render('home', context);
+        })
+        .catch(error => {
+            console.log(error); 
+            res.render('500');
+        }); 
+});
 
-    //Build query string 
-    var url = 'https://api.github.com/search/repositories?q='; 
-    url += "language:" + lang; 
-    licenses.forEach((l) => {
-        url += "+license:" + l
-    }); 
-    url += "+is:" + publicPrivate; 
-    url += "+fork:" + fork; 
-    //url += "+stars:" + starCount;
-    url += "&sort=" + sortBy; 
-    url += "&order=desc"; 
+app.get('/repos', function(req, res, next){
+    //search by language
+    var context = {};
+    context.repos = [];
+    var idx = 0;
+    var url = urlCreator(['python']);
     axios.get(url)
         .then(response => {
             while(context.repos.length < 10 && idx < response.data.items.length){
