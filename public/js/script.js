@@ -6,6 +6,45 @@ document.getElementById("languageList").addEventListener("click", function(e) {
     }
 });
 
+const languageList = document.getElementById('languageList');
+languageList.addEventListener('click', function(e) {
+    console.log('button was clicked');
+    var language;
+    if (e.target && e.target.nodeName === "LI") {
+        language = e.target.textContent;
+    }
+    event.preventDefault();
+
+
+
+    var payload = new Headers();
+    payload.append("language", language);
+
+    fetch('/repos', {method: 'GET', headers: payload})
+        .then(function(response) {
+            if(response.ok) {
+                console.log('data was loaded to database');
+
+                return response.json();
+
+            }
+            throw new Error('Request failed.');
+        }).then(function (jsonObject) {
+        console.log(jsonObject);
+        //add to table
+        createList(jsonObject['response']);
+
+
+    }).catch(function(error) {
+        console.log(error);
+    });
+});
+
+
+
+
+
+
 document.getElementById('urlSubmit').addEventListener('click', (event) => {
     console.log('test');
     var req = new XMLHttpRequest(); 

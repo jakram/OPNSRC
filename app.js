@@ -41,7 +41,8 @@ app.get('/repos', function(req, res, next){
     var context = {};
     context.repos = [];
     var idx = 0;
-    var url = urlCreator(['python']);
+    var language = req.headers.language;
+    var url = urlCreator([language]);
     axios.get(url)
         .then(response => {
             while(context.repos.length < 10 && idx < response.data.items.length){
