@@ -54,7 +54,8 @@ app.get('/repos', function(req, res, next){
                 }
                 idx++;
             }
-            res.render('home', context);
+            res.type('plain/text'); 
+            res.send(JSON.stringify(context)); 
         })
         .catch(error => {
             console.log(error); 

@@ -21,7 +21,7 @@ languageChoice.addEventListener('click', function(e) {
         .then(function(response) {
             if(response.ok) {
                 console.log('data was loaded to database');
-
+                console.log(response); 
                 return response.json();
 
             }
