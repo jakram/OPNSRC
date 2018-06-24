@@ -1,11 +1,5 @@
 //Github API Script
 
-document.getElementById("languageList").addEventListener("click", function(e) {
-    if (e.target && e.target.nodeName == "LI") {
-        var language = e.target.textContent;
-    }
-});
-
 const languageChoice = document.getElementById('languageSelect');
 languageChoice.addEventListener('click', function(e) {
     console.log('button was clicked');
