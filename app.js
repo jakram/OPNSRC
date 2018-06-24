@@ -18,7 +18,7 @@ app.get('/',function(req,res,next){
     var context = {};
     context.repos = [];
     var idx = 0;
-    var url = urlCreator(['c++']);
+    var url = urlCreator(['']);
     axios.get(url)
         .then(response => {
             while(context.repos.length < 5 && idx < response.data.items.length){
@@ -55,6 +55,7 @@ app.get('/repos', function(req, res, next){
                 idx++;
             }
             res.render('home', context);
+
         })
         .catch(error => {
             console.log(error); 

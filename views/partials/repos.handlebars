@@ -1,12 +1,12 @@
-<div class="list-group" name="repos">
+<div class="list-group" id="repos">
     <br>
-    <a href="/issues?repo={{this.full_name}}&language={{this.language}}" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light">
+    <a href="/issues?repo={{this.full_name}}&language={{this.language}}" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light" name="card">
         <div class="d-flex w-100 justify-content-between">
-            <h3 class="mb-1">{{this.name}}</h3>
-            <small>{{this.language}}</small>
+            <h3 class="mb-1" id="repoName" >{{this.name}}</h3>
+            <small id="reposLang">{{this.language}}</small>
         </div>
-        <p class="mb-1">{{this.description}}</p>
-        <small>Donec id elit non mi porta.</small>
+        <p class="mb-1" id="repoDesc">{{this.description}}</p>
+        <small id="numIssues">{{this.open_issues_count}} issues</small>
     </a>
 </div>
 

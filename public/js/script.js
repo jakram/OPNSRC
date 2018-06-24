@@ -12,38 +12,32 @@ languageChoice.addEventListener('click', function(e) {
     var language = "python";
     event.preventDefault();
 
-
-
     var payload = new Headers();
     payload.append("language", language);
 
     fetch('/repos', {method: 'GET', headers: payload})
         .then(function(response) {
             if(response.ok) {
-                console.log('data was loaded to database');
-
+                console.log('call was made to server');
                 return response.json();
-
             }
             throw new Error('Request failed.');
         }).then(function (jsonObject) {
-        console.log(jsonObject);
-        //add to table
-        createList(jsonObject['response']);
-
-
-    }).catch(function(error) {
+            console.log("got response");
+            console.log(jsonObject);
+            createList(jsonObject['repos']);
+        }).catch(function(error) {
         console.log(error);
     });
 });
 
 
-function createList(response) {
+function createList(repos) {
     console.log("showing response 0 ...")
-    console.log(response[0]);
+    console.log(repos[0]);
     for (var i = 0; i < response.length; i++) {
-        console.log(response[i]);
-        displayRepo(response[i]);
+        console.log(repos[i]);
+        displayRepo(repos[i]);
     }
 
     //Get the elements with class="column"
@@ -55,6 +49,7 @@ function createList(response) {
 function displayRepo(repo) {
     
     let repoLink = document.getElementById("repoUrl");
+
 }
 
 // List View
