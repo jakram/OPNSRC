@@ -18,7 +18,7 @@ languageChoice.addEventListener('click', function(e) {
     fetch('/repos', {method: 'GET', headers: payload})
         .then(function(response) {
             if(response.ok) {
-                console.log('call was made to server');
+                console.log(response); 
                 return response.json();
             }
             throw new Error('Request failed.');
