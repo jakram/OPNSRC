@@ -1,16 +1,68 @@
 /* Create two equal columns that floats next to each other */
-/*.column {
+.column {
     float: left;
     width: 80%;
     padding: 10px;
-}*/
+}
 
 /* Clear floats after the columns */
-/*.row:after {
-    content: "";
+.row:after {
     display: table;
     clear: both;
-}*/
+}
+
+#siteName {
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-family: Ubuntu;
+    margin-bottom: 1rem;
+    color: #fdc877;
+}
+#siteName {
+
+    color: #d0c3e2;
+}
+
+/* cards in home page */
+.list-group-item-light.list-group-item-action {
+    /* change font color here color: #f2f2f2; */
+    /* background-color: #9c81c2; */
+}
+
+/* This is the link of the entire card */
+a.card-link {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 8px;
+}
+.card-link:hover {
+    text-decoration: none;
+
+    background:rgba(209, 209, 233, .5);
+
+}
+
+#issueCard {
+    margin-bottom: 2em;
+}
+
+#issueTitle {
+    background: #9c81c2;
+    color: whitesmoke;
+}
+#card-body {
+    background-color: #d0c3e2;
+}
+
+/* Issue */
+#issueBody {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 144ch;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -100,6 +152,14 @@ body {
   color: #fdc877;
 }
 
+#header h1:hover {
+    font-weight: 700;
+    font-size: 1.8rem;
+    font-family: Ubuntu;
+    margin-bottom: 1rem;
+    color: #fdce85;
+}
+
 #header h1 span {
   color: #fff;
 }
@@ -119,6 +179,8 @@ body {
   font-family: 'Open Sans';
   color: #000;
 }
+
+
 
 /*-------------------------------------*/
 /* BENEFITS */
@@ -182,3 +244,4 @@ body {
     clear: both;
   }
 }
+
