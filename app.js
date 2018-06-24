@@ -18,7 +18,7 @@ app.get('/',function(req,res,next){
     var context = {};
     context.repos = [];
     var idx = 0;
-    var url = urlCreator(['c++']);
+    var url = urlCreator(['']);
     axios.get(url)
         .then(response => {
             while(context.repos.length < 5 && idx < response.data.items.length){
@@ -38,20 +38,25 @@ app.get('/',function(req,res,next){
 
 app.get('/repos', function(req, res, next){
     //search by language
+    console.log(req.headers.language);
+    console.log("repos server side");
     var context = {};
     context.repos = [];
     var idx = 0;
-    var url = urlCreator(['python']);
+    var language = req.headers.language;
+    var url = urlCreator([language]);
     axios.get(url)
         .then(response => {
-            while(context.repos.length < 10 && idx < response.data.items.length){
+            while(context.repos.length < 16 && idx < response.data.items.length){
                 var r = response.data.items[idx]; 
                 if(r.open_issues_count > 0){
                     context.repos.push(response.data.items[idx]);
                 }
                 idx++;
             }
-            res.render('home', context);
+            res.type('plain/text'); 
+            res.send(JSON.stringify(context)); 
+
         })
         .catch(error => {
             console.log(error); 
@@ -101,7 +106,9 @@ app.get('/issues',function(req,res,next){
             }
             console.log(response.data.items); 
             while(context.issues.length < 15 && index < response.data.items.length){
-                context.issues.push(response.data.items[index]);
+                if(response.data.items[index].state == "open"){
+                    context.issues.push(response.data.items[index]);
+                }
                 index++;
             }
             res.render('issues', context);

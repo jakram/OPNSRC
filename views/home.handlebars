@@ -1,21 +1,27 @@
-
-<nav class="navbar sticky-top navbar-light bg-white">
-
-    <a class="navbar-brand" href="/" style="font-size: 3em" id="projectName">OPNSRC</a>
-
-</nav>
-
-<div class="container" id="header">
-    <h1>{{title}}</h1>
-
-    <p class="text">{{subTitle}}</p>
-
+<div id="header">
+    <h1>OPN<span>*</span>SRC</h1>
+    <h2>Why&nbsp;Open Source?</h2>
+    <p>Help out the community and help yourself. There are many benefits to&nbsp;contributing&nbsp;to&nbsp;open&nbsp;source.</p>
 </div>
 
-{{!-- {{container will include a brief paragraph on Why Open Source? }} --}}
+<div id="benefits">
+    <div class="benefit">
+        <h2>Collaboration</h2>
+        <p>Work with people from all around the world. Not only will it help your understanding of team dynamics, you&rsquo;ll also have a chance to work with a diverse group of people.</p>
+    </div>
+    <div class="benefit">
+        <h2>Creativity</h2>
+        <p>Have an idea to improve poeple&rsquo;s lives? Build it. Want to take an existing project in a whole new direction? Totally. The possibilities are only limited by your imagination.</p>
+    </div>
+    <div class="benefit">
+        <h2>Contribution</h2>
+        <p>Give back to the development community by creating something truly unique. You can help contribute your expertise to someone else&rsquo;s project and help them get over thorny issues.</p>
+    </div>
+</div>
+</header>
 
-<div class="container" id="whyOS">
-    {{>whyOS}}
+<div class="container">
+    <button type="button" class="btn btn-primary" id="languageSelect">Test Search API</button>
 </div>
 
 {{!-- {{form container}} --}}
@@ -23,20 +29,16 @@
 
 </div>
 
-<h4>Open Source Projects matching  your skills: </h4>
-
-<div class="container" id="list">
+<div class="container" id="openSourceTitle">
+<h4>Open Source Projects: </h4>
+</div>
+<div class="container" id="list" style="min-height: 100vh">
     {{#each repos}}
         {{>repos this}}
     {{/each}}
 </div>
 
 <br> 
-
-<div>
-    <button type="button" class="btn btn-primary" id="urlSubmit">Test Search API</button>
-</div>
-
 
 {{!-- {{ footer partial can be embedded in all pages}} --}}
 {{>footer}}

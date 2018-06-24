@@ -1,56 +1,46 @@
 //Github API Script
 
-document.getElementById("languageList").addEventListener("click", function(e) {
-    if (e.target && e.target.nodeName == "LI") {
-        var language = e.target.textContent;
-    }
+const languageChoice = document.getElementById('languageSelect');
+languageChoice.addEventListener('click', function(e) {
+    console.log('button was clicked');
+
+    var language = "python";
+    event.preventDefault();
+
+    var node = document.getElementById("list"); 
+    node.classList.add("divFadeOut"); 
+    var payload = new Headers();
+    payload.append("language", language);
+
+    fetch('/repos', {method: 'GET', headers: payload})
+        .then(function(response) {
+            if(response.ok) {
+                console.log(response); 
+                //Remove default projects on landing
+                while(node.firstChild){
+                    node.removeChild(node.firstChild); 
+                }
+                return response.json();
+            }
+            throw new Error('Request failed.');
+        }).then(function (jsonObject) {
+            console.log("got response");
+            console.log(jsonObject);
+            createList(jsonObject['repos']);
+            node.classList.remove("divFadeOut"); 
+            node.classList.add("divFadeIn"); 
+        }).catch(function(error) {
+        console.log(error);
+    });
+    node.classList.remove("divFadeIn"); 
 });
 
-document.getElementById('urlSubmit').addEventListener('click', (event) => {
-    console.log('test');
-    var req = new XMLHttpRequest(); 
 
-    //Query string qualifiers
+function createList(repos) {
 
-    //search by language
-    //var lang = document.getElementById('language').value;
-    var lang = "c++";
-    //search public or private repos
-    var publicPrivate = "public"; 
-    //common open source licenses 
-    var licenses = ["mit", "gpl", "apache-2.0", "mpl-2.0", "cc"]; 
-    //sort by stars, forks, or updated
-    var sortBy = "stars"; 
-
-    //Build query string 
-    var url = 'https://api.github.com/search/repositories?q='; 
-    url += "language:" + lang; 
-    licenses.forEach((l) => {
-        url += "+license:" + l
-    }); 
-    url += "+is=" + publicPrivate; 
-    url += "&sort=" + sortBy; 
-    url += "&order=desc"; 
-    req.open("GET", url, true); 
-    req.addEventListener('load', () => {
-        if(req.status >= 200 && req.status < 400) {
-            var response = JSON.parse(req.responseText);  
-            console.log(response);
-            createList(response);
-        } else {
-            console.log('ERROR'); 
-        }
-    }); 
-    req.send(null); 
-    event.preventDefault(); 
-});
-
-function createList(response) {
-    console.log("showing response 0 ...")
-    console.log(response[0]);
-    for (var i = 0; i < response.length; i++) {
-        console.log(response[i]);
-        displayRepo(response[i]);
+    for (var i = 0; i < repos.length; i++) {
+        console.log(repos[i]);
+        displayRepo(repos[i]);
     }
 
     //Get the elements with class="column"
@@ -60,8 +50,61 @@ function createList(response) {
 }
 
 function displayRepo(repo) {
+    //Classes, IDs, and href
+    var outerDivClass = "list-group"; 
+    var outerDivId = "repos";
+    var aClass = "list-group-item list-group-item-action flex-column align-items-start list-group-item-light"; 
+    var innerDivClass = "d-flex w-100 justify-content-between";
+    var pClass = "mb-1"; 
+    var pId = "repoDesc"; 
+    var smallLanguageId = "repoName"; 
+    var smallIssuesId = "numIssues"; 
+    var h3Class = "mb-1"; 
+    var h3Id = "repoName"; 
+    var href = "/issues?repo=" + repo.full_name + "&language=" + repo.language; 
+    //Create elements 
+    var outerDiv = document.createElement("div"); 
+    var br = document.createElement("br"); 
+    var a = document.createElement("a"); 
+    var innerDiv = document.createElement("div"); 
+    var h3 = document.createElement("h3"); 
+    var p = document.createElement("p"); 
+    var smallLanguage = document.createElement("small"); 
+    var smallIssues = document.createElement("small");
+    //Create text 
+    var h3Text = document.createTextNode(repo.name);
+    h3.appendChild(h3Text); 
+    var smallLanguageText = document.createTextNode(repo.language); 
+    smallLanguage.appendChild(smallLanguageText); 
+    var pText = document.createTextNode(repo.description); 
+    p.appendChild(pText); 
+    var smallIssuesText = document.createTextNode(repo.open_issues_count + " issues"); 
+    smallIssues.appendChild(smallIssuesText); 
+    //Set attributes 
+    outerDiv.setAttribute("class", outerDivClass); 
+    outerDiv.setAttribute("id", outerDivId); 
+    a.setAttribute("href", href); 
+    a.setAttribute("class", aClass); 
+    innerDiv.setAttribute("class", innerDivClass);  
+    h3.setAttribute("class", h3Class); 
+    h3.setAttribute("id", h3Id); 
+    smallLanguage.setAttribute("id", smallLanguageId); 
+    p.setAttribute("class", pClass); 
+    p.setAttribute("id", pId); 
+    smallIssues.setAttribute("id", smallIssuesId); 
+    //Create the structure
+    outerDiv.appendChild(br); 
+    outerDiv.appendChild(a); 
+    a.appendChild(innerDiv); 
+    a.appendChild(p); 
+    a.appendChild(smallIssues); 
+    innerDiv.appendChild(h3); 
+    innerDiv.appendChild(smallLanguage); 
+    //Add to page
+    document.getElementById("list").appendChild(outerDiv); 
     
-    let repoLink = document.getElementById("repoUrl");
+    //let repoLink = document.getElementById("repoUrl");
+
 }
 
 // List View
