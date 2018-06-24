@@ -78,7 +78,7 @@ function displayRepo(repo) {
     smallLanguage.appendChild(smallLanguageText); 
     var pText = document.createTextNode(repo.description); 
     p.appendChild(pText); 
-    var smallIssuesText = document.createTextNode(repo.open_issues_count); 
+    var smallIssuesText = document.createTextNode(repo.open_issues_count + " issues"); 
     smallIssues.appendChild(smallIssuesText); 
     //Set attributes 
     outerDiv.setAttribute("class", outerDivClass); 
