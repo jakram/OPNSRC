@@ -22,3 +22,18 @@
     <div>
         <button type="button" class="btn btn-primary" id="formButton">Search Projects</button>
     </div>
+
+
+    //var language = "+language:" + req.query.language;
+    //url += language;
+    var state = "+is:open";
+    url += state;
+    var type = "+is:issue";
+    url += type;
+    //var label = "help+wanted";
+    //url += "+label:" + label;
+
+    var sortBy = "created";
+    url += "&sort=" + sortBy;
+    var order = "desc";
+    url += "&direction=" + order;
