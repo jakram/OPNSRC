@@ -1,24 +1,38 @@
-<nav class="navbar sticky-top navbar-light bg-white">
 
-    <a class="navbar-brand" href="/" style="font-size: 2em" id="projectName">OPNSRC</a>
+<div id="header">
+    <a href="/">
+        <h1 id="siteName">OPN<span>*</span>SRC</h1>
+    </a>
 
-</nav>
+    <br>
+    <h2>{{repo}}</h2>
+    <p>These are some of the issues you can start with this project. Maybe Jamil can do his magic in this line</p>
+</div>
+
+</header>
 
 
-<h3>{{repo}}</h3>
+
 <br>
 
 <div class="container">
     {{#each issues}}
-        <div class="list-group" name="issues">
-            <a href="{{this.html_url}}" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light">
-                <div class="d-flex w-100 justify-content-between">
-                    <h3 class="mb-1">{{this.title}}</h3>
-                </div>
-                <p class="mb-1">{{this.body}}</p>
-            </a>
-            <br>
+        <div class="container" id="issueCard">
+
+
+        <div class="card">
+            <a class="card-link" href={{this.html_url}}></a>
+            <div class="card-header" id="issueTitle">
+                {{this.title}}
+            </div>
+
+            <div class="card-body" id="card-body">
+                <p class="card-text" id="issueBody">{{this.body}}</p>
+            </div>
+
         </div>
+        </div>
+
     {{/each}}
 </div>
 
