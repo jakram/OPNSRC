@@ -38,6 +38,8 @@ app.get('/',function(req,res,next){
 
 app.get('/repos', function(req, res, next){
     //search by language
+    console.log(req.headers.language);
+    console.log("repos server side");
     var context = {};
     context.repos = [];
     var idx = 0;
@@ -45,7 +47,7 @@ app.get('/repos', function(req, res, next){
     var url = urlCreator([language]);
     axios.get(url)
         .then(response => {
-            while(context.repos.length < 10 && idx < response.data.items.length){
+            while(context.repos.length < 16 && idx < response.data.items.length){
                 var r = response.data.items[idx]; 
                 if(r.open_issues_count > 0){
                     context.repos.push(response.data.items[idx]);
