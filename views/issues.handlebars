@@ -1,23 +1,26 @@
-<h4>{{repo}}</h4>
+<nav class="navbar sticky-top navbar-light bg-white">
+
+    <a class="navbar-brand" href="/" style="font-size: 2em" id="projectName">OPNSRC</a>
+
+</nav>
+
+
+<h3>{{repo}}</h3>
 <br>
 
-<div class="list-group" id="issues">
-
-    <ul>
-        {{#each issues}}
-
-            <a href={{this.html_url}} class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light">
+<div class="container">
+    {{#each issues}}
+        <div class="list-group" name="issues">
+            <a href="{{this.html_url}}" class="list-group-item list-group-item-action flex-column align-items-start list-group-item-light">
                 <div class="d-flex w-100 justify-content-between">
                     <h3 class="mb-1">{{this.title}}</h3>
                 </div>
                 <p class="mb-1">{{this.body}}</p>
             </a>
-
-        {{/each}}
-    </ul>
-
-    <br>
-
+            <br>
+        </div>
+    {{/each}}
 </div>
+
 
 
