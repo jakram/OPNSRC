@@ -1,13 +1,156 @@
 /* Create two equal columns that floats next to each other */
-.column {
+/*.column {
     float: left;
     width: 80%;
     padding: 10px;
-}
+}*/
 
 /* Clear floats after the columns */
-.row:after {
+/*.row:after {
     content: "";
     display: table;
     clear: both;
+}*/
+
+
+/* MODIFIED MEYER RESET */
+
+html, body, div, span,
+h1, h2, p, a, img, ul, li, 
+article, footer, header,
+nav, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, footer, header, nav, section {
+  display: block;
+}
+
+/*-------------------------------------*/
+/* GLOBAL */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  overflow: auto;
+  font: 300 16px/1.5 'Open Sans', sans-serif;
+  /* momentum scrolling ios */
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  /* to fix text resizing ios */
+  -webkit-text-size-adjust: none;
+}
+
+/*-------------------------------------*/
+/* HEADER */
+
+#header {
+  margin-top: 0;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  background-color: #65b5b6;
+  border-top: 15px solid #ee513e;
+  padding: 2.5rem 1rem; !important
+}
+
+#header h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  font-family: Ubuntu;
+  margin-bottom: 1rem;
+  color: #fdc877;
+}
+
+#header h1 span {
+  color: #fff;
+}
+
+#header h2 {
+  font-size: 3.7rem;
+  font-weight: 700;
+  font-family: 'Open Sans';
+  margin-bottom: 2rem;
+  letter-spacing: -.2rem;
+  line-height: 1;
+}
+
+#header p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-family: 'Open Sans';
+  color: #000;
+}
+
+/*-------------------------------------*/
+/* BENEFITS */
+
+#benefits {
+  font-family: 'Open Sans';
+  height: 100%;
+  width: 100%;
+  background-color: #ee513e;
+  color: #fff;
+  padding: 2rem 2rem 1rem;
+  margin-bottom: 3rem;
+}
+
+.benefit {
+  margin-bottom: 1.5rem;
+}
+
+.benefit h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.benefit p {
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: left;
+  color: #ffdbd7;
+}
+
+@media screen and (min-width: 370px) {
+  header p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #header {
+    padding: 2.5rem 1rem 3.5rem;
+  }
+
+  #header h2 {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .benefit {
+    position: relative;
+    width: 29%;
+    float: left;
+    margin: 0 2%;
+    margin-bottom: 1.5rem;
+    height: 100%;
+  }
+
+  #benefits:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
