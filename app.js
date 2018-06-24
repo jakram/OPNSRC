@@ -60,30 +60,39 @@ app.get('/repos', function(req, res, next){
 });
 
 app.get('/issues',function(req,res,next){
+
     //https://api.github.com/search/issues?q=windows+label:bug+language:python+state:open&sort=created&order=asc
 
     var context = {};
-    context.issues = []; 
+    context.issues = [];
+    context.repo = req.query.repo;
     console.log(req.query);
-    var language = req.query.language;
+
 
     var baseUrl = "https://api.github.com/search/issues?q=" + req.query.repo;
+
     //paramms
+
+
+
+    var language = req.query.language;
     var sortBy = "created";
     var order = "desc";
     var state = "open";
     var type = "issue";
+    var label = "\"help+wanted\"";
 
     var index = 0;
 
     axios.get(baseUrl, {
             params: {
-                language: language,
-                state: state,
-                assignee: "none",
-                sort: sortBy,
+                is:state,
+                is:type,
+                no:'assignee',
+                label:label,
+                sort:sortBy,
                 direction: order,
-                is: type
+                language:language
             }
         })
         .then(response => {
