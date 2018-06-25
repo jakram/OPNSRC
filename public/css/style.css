@@ -64,6 +64,13 @@ a.card-link {
     max-width: 144ch;
 }
 
+#list {
+
+}
+#reposHome {
+    padding-top: 3em;
+    background-color: whitesmoke;
+}
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -192,7 +199,7 @@ body {
   background-color: #ee513e;
   color: #fff;
   padding: 2rem 2rem 1rem;
-  margin-bottom: 3rem;
+
 }
 
 .benefit {
