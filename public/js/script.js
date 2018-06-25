@@ -56,7 +56,7 @@ function displayRepo(repo) {
     var innerDivClass = "d-flex w-100 justify-content-between";
     var pClass = "mb-1"; 
     var pId = "repoDesc"; 
-    var smallLanguageId = "repoName"; 
+    var smallLanguageId = "reposLang"; 
     var smallIssuesId = "numIssues"; 
     var h3Class = "mb-1"; 
     var h3Id = "repoName"; 
