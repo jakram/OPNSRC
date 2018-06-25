@@ -20,26 +20,28 @@
 </div>
 </header>
 
-<div class="container">
-    <button type="button" class="btn btn-primary" id="languageSelect">Test Search API</button>
+<div class="container-fluid" id="reposHome">
+
+    <div class="container">
+        <button type="button" class="btn btn-primary" id="languageSelect">Test Search API</button>
+    </div>
+
+    {{!-- {{form container}} --}}
+    <div class="container" id="form">
+
+    </div>
+
+    <div class="container" id="openSourceTitle">
+    <h4>Open Source Projects: </h4>
+    </div>
+    <div class="container" id="list" style="min-height: 100vh">
+        {{#each repos}}
+            {{>repos this}}
+        {{/each}}
+    </div>
+
+    <br>
 </div>
-
-{{!-- {{form container}} --}}
-<div class="container" id="form">
-
-</div>
-
-<div class="container" id="openSourceTitle">
-<h4>Open Source Projects: </h4>
-</div>
-<div class="container" id="list" style="min-height: 100vh">
-    {{#each repos}}
-        {{>repos this}}
-    {{/each}}
-</div>
-
-<br> 
-
 {{!-- {{ footer partial can be embedded in all pages}} --}}
 {{>footer}}
 
