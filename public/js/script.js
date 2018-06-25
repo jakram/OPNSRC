@@ -1,12 +1,11 @@
 //Github API Script
 
-const languageChoice = document.getElementById('languageSelect');
-languageChoice.addEventListener('click', function(e) {
-    console.log('button was clicked');
-
-    var language = "python";
+function searchLanguage(language) {
     event.preventDefault();
 
+    console.log("test"); 
+
+    document.getElementById("collapse-btn").click(); 
     var node = document.getElementById("list"); 
     node.classList.add("divFadeOut"); 
     var payload = new Headers();
@@ -33,7 +32,7 @@ languageChoice.addEventListener('click', function(e) {
         console.log(error);
     });
     node.classList.remove("divFadeIn"); 
-});
+};
 
 
 function createList(repos) {
