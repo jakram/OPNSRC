@@ -20,6 +20,7 @@
 </div>
 </header>
 
+
     <p class="container">
       <button id="collapse-btn" class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Select Language
@@ -52,22 +53,29 @@
       </div>
     </div>
 
-{{!-- {{form container}} --}}
-<div class="container" id="form">
+<div class="container-fluid" id="reposHome">
 
+
+    <div class="container">
+        <button type="button" class="btn btn-primary" id="languageSelect">Test Search API</button>
+    </div>
+
+    {{!-- {{form container}} --}}
+    <div class="container" id="form">
+
+    </div>
+
+    <div class="container" id="openSourceTitle">
+    <h4>Open Source Projects: </h4>
+    </div>
+    <div class="container" id="list" style="min-height: 100vh">
+        {{#each repos}}
+            {{>repos this}}
+        {{/each}}
+    </div>
+
+    <br>
 </div>
-
-<div class="container" id="openSourceTitle">
-<h4>Open Source Projects: </h4>
-</div>
-<div class="container" id="list" style="min-height: 100vh">
-    {{#each repos}}
-        {{>repos this}}
-    {{/each}}
-</div>
-
-<br> 
-
 {{!-- {{ footer partial can be embedded in all pages}} --}}
 {{>footer}}
 
