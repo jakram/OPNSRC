@@ -108,7 +108,49 @@ a.card-link {
     animation-name: fadeIn; 
     animation-duration: 2s;
 }
+/*-------------------------------------*/
+/* Collapse Menu */
 
+.card-body {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #65b5b6;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #ee513e;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: .5em;
+    font-size: 15px;
+    text-align: center;
+}
+.grid-item a {
+    text-decoration: none;
+    color: white;
+}
+
+.grid-item a:hover {
+    color: #65b5b6;
+}
+
+
+.btn {
+    margin-bottom: 1em;
+    background-color: #65b5b6;
+    border: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    background-color: #65b5b6;
+}
+
+/*-------------------------------------*/
 /* MODIFIED MEYER RESET */
 
 html, body, div, span,
