@@ -71,6 +71,15 @@ a.card-link {
     padding-top: 3em;
     background-color: whitesmoke;
 }
+
+/* repos */
+#numIssues {
+    color: #9c81c2;
+}
+#reposLang {
+    color: #9c81c2;
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
